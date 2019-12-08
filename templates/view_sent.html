@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sent Messages
+{% endblock %}
+
+{% block main %}
+
+  <h1 id="title">Sent Messages</h1>
+
+  <!-- Styling for collapsible copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible_animate -->
+  {% for rows in rows %}
+    <button id="rounded" class="collapsible">
+
+      <!-- Table to keep key message information in line -->
+      <table id="table">
+        <thead>
+          <tr>
+
+            <!-- Display subject -->
+            <th>
+              <div align="left">
+                <b style="color: white;">Subject: {{ rows["subject"] }}</b>
+              </div>
+            </th>
+
+            <!-- Display full name -->
+            <th>
+              <div align="center" style="color: white;">To: {{ rows["firstname"] }} {{ rows["lastname"] }}</div>
+            </th>
+
+            <!-- Display time sent -->
+            <th>
+              <div style="color: white;" align="right">Time Sent: {{ rows["time"] }}</div>
+            </th>
+
+          </tr>
+        </thead>
+      </table>
+    </button>
+
+    <!-- Displays message content in the content box -->
+    <div id="rounded" class="content">
+      </br>
+      <p align="left">{{ rows["message"] }}</p>
+    </div>
+
+    <br>
+
+  {% endfor %}
+
+  <!-- Horizontal line to divide content -->
+  <hr style="border: 2px solid white;">
+
+  </br>
+
+  <!-- Button to view unread messages -->
+  <form action="/chat" method='get'>
+    <button class="btn btn-outline-light btn-block" type="submit">
+      <div id="button">
+        View Unread Messages
+      </div>
+    </button>
+
+    </br>
+
+  </form>
+
+  <!-- Button to view read messages -->
+  <form action="/view_all" method='post'>
+    <button class="btn btn-outline-light btn-block" type="submit">
+      <div id="button">
+        View Read Messages
+      </div>
+    </button>
+  </form>
+
+  <!-- Styling for collapsible copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible_animate -->
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++)
+    {
+      coll[i].addEventListener("click", function()
+      {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight)
+        {
+          content.style.maxHeight = null;
+        }
+        else
+        {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
+{% endblock %}

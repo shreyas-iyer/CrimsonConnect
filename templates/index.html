@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Profile Page
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1 id="title">Your Courses</h1>
+
+        </br>
+
+        <!-- Display classes the user is enrolled in as buttons -->
+        {% for rows in rows %}
+            <!-- Copied styling from https://getbootstrap.com/docs/4.0/components/buttons/ -->
+            <form action="{{ url_for('view_class', subject=rows['subject'], number=rows['number']) }}">
+                <button id="large" class="btn btn-outline-light btn-block">{{ rows["subject"] }} {{rows["number"] }}</button>
+            </form>
+
+            </br>
+        {% endfor %}
+    </div>
+
+    </br>
+
+    <!-- Horizontal line across the page to split courses and other buttons -->
+    <hr style="border: 2px solid white;">
+
+    </br></br>
+
+    <!-- Button to add classes -->
+    <form action="add_class">
+        <button class="btn btn-outline-light btn-block"><div id="button">Add Classes</div></button>
+    </form>
+{% endblock %}

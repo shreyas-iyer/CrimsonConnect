@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    No New Chats
+{% endblock %}
+
+{% block main %}
+
+    <h1 id="title">You have no unread chats</h1>
+
+    <!-- Button to see sent chats -->
+    <form action="{{ url_for('view_sent') }}" method='post'>
+        <button class="btn btn-outline-light btn-block btn-lg" type="submit"><div id="button">View Sent Messages</div></button>
+    </form>
+
+    </br>
+
+    <!-- Button to see read chats -->
+    <form action="/view_all" method='post'>
+        <button class="btn btn-outline-light btn-block btn-lg" type="submit"><div id="button">View Read Messages</div></button>
+    </form>
+
+{% endblock %}

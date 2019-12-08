@@ -1,0 +1,175 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .red
+{
+    color: #BC1919;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+/* formatting for titles */
+#title
+{
+    color: white;
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* change background color for all pages */
+body
+{
+    /* used color tool found at https://www.quackit.com/css/css_color_codes.cfm */
+    background-color: #BC1919;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+/* apology message text formatting */
+#apology
+{
+    font-size: 48pt;
+    color: white;
+}
+
+/* formatting for chat preview information in collapsible box */
+#table
+{
+    background-color: transparent;
+    width: 100%;
+}
+
+/* formatting for chat preview */
+.collapsible
+{
+  background-color: transparent;
+  cursor: pointer;
+  padding: 25px;
+  width: 100%;
+  text-align: left;
+  font-size: 15px;
+
+}
+
+/* the chat preview turns light Grey when the cursor is hovering over it */
+.active, .collapsible:hover
+{
+  background-color: lightGrey;
+}
+
+/* formatting for chat messages */
+.content
+{
+  padding: 0 25px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: white;
+}
+
+/* Intended to make text boxes span the entire page */
+#long
+{
+    width: 100%;
+}
+
+/* rounded borders for buttons and chats */
+#rounded
+{
+    border-radius: 25px;
+}
+
+/* copied from https://stackoverflow.com/questions/6722467/how-to-remove-the-default-link-color-of-the-html-hyperlink-a-tag */
+a
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* text formatting when cursor hovers above a link */
+/* copied from Git */
+a:hover
+{
+     color:#00A0C6;
+     text-decoration:none;
+     cursor:pointer;
+}
+
+/* formatting for chat messages */
+#container
+{
+    width:100%;
+    text-align:center;
+}
+
+/* formatting for text in buttons */
+#button
+{
+    color: white;
+    font-size: 35px;
+
+}
+
+/* display forms inline */
+#form
+{
+    display: inline;
+}
+
+/* no border */
+.table
+{
+    border-width: 0px;
+}
+
+/* copied following two styling functions from github */
+#tr:hover {
+   background: lightGrey;
+}
+
+
+td a
+{
+    /* display entries as a block to allow users to click in the general area to redirect */
+    display: block;
+    padding: 16px;
+}
+
+/* styling for class buttons to make them appear large */
+#large
+{
+    font-size: 75px;
+}
+
+
+/* make contact fit the width */
+.fitwidth
+{
+    width: 1px;
+    white-space: nowrap;
+}
+
+/* smaller font styling for smaller buttons */
+#sub
+{
+    color: white;
+    font-size: 45px;
+}

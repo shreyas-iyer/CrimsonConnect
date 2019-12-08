@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    {{ subject }} {{ number }}'s Homepag
+{% endblock %}
+
+{% block main %}
+  <!-- Heading for course stream section of the page -->
+  <h1 id="title">{{ subject }} {{ number }}'s Course Stream</h1>
+
+  </br>
+
+  <!-- Button to add post to course stream -->
+  <form action="{{ url_for('post_stream', subject=subject, number=number) }}" method='get'>
+    <button class="btn btn-outline-light btn-lg" type="submit">Add Post to Course Stream</button>
+  </form>
+
+  </br>
+
+  <h1 style="color: white;">No messages in the course stream</h2>
+
+  </br>
+
+  <!-- Horizontal line across the page to split content -->
+  <hr style="border: 2px solid white;">
+  </br></br>
+
+
+  <!-- Table displays the students enrolled in this class -->
+  <h1 id="title">Students in {{subject}}{{number}}</h2>
+
+  <table class="table table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <th style="color: white;">First Name</th>
+        <th style="color: white;">Last Name</th>
+        <th style="color: white;">Username</th>
+      </tr>
+    </thead>
+
+    <tbody style="font-size: 20px;">
+      {% for rows in rows %}
+        <a href="{{ url_for('view_friend', username1=rows['username']) }}">
+          <tr id="tr">
+            <!-- Display students full name and username -->
+            <td><a style="color: white;" href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["firstname"] }}</a></td>
+            <td><a style="color: white;" href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["lastname"] }}</a></td>
+            <td><a style="color: white;" href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["username"] }}</a></td>
+          </tr>
+        </a>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Styling for collapsible copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible_animate -->
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++)
+    {
+      coll[i].addEventListener("click", function()
+      {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight)
+        {
+          content.style.maxHeight = null;
+        }
+        else
+        {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
+  </br>
+
+  <!-- Horizontal line across the page to split courses and other buttons -->
+  <hr style="border: 2px solid white;">
+
+  </br>
+  </br>
+
+  <!-- Form to remove the course from the user's profile -->
+  <form action="{{ url_for('remove', subject=subject, number=number) }}" method='post'>
+    <button class="btn btn-outline-light btn-lg btn-block" type="submit"><div id="button">Remove {{ subject }} {{ number }} From Profile</div></button>
+    </br></br>
+  </form>
+{% endblock%}

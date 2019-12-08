@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Update Classes
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">Add Courses</h1>
+
+    </br>
+
+        <!-- Form to add class -->
+        <form action="/add_class" method="post">
+            <div class="form-group">
+                <!-- Tag inserted to keep the dropdown list on its own line -->
+                <p>
+                    <!-- Label for subject dropdown list -->
+                    <label style="font-size: 25px; color: white;">Select Subject</label>
+
+                    <!-- Create dropdown list -->
+                    <select name = "subject">
+
+                        <!-- Iterate through course list info and display distinct subjects -->
+                        {% for rows in rows %}
+                            <option value="{{ rows["subject"] }}">{{ rows["subject"] }}</option>
+                        {% endfor %}
+
+                    </select>
+                </p>
+
+                <!-- Input field for course number -->
+                <input autocomplete="off" autofocus class="form-control" name="number" placeholder="Course Number" type="text">
+            </div>
+
+            </br>
+
+            <!-- Button to submit form -->
+            <button class="btn btn-outline-light btn-lg" type="submit">
+                <div id="button">
+                    Add Course to Profile
+                </div>
+            </button>
+
+        </form>
+
+{% endblock %}
+

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    {{ firstname }} {{ lastname }}'s Profile
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">{{ firstname }} {{lastname}}</h1>
+    <h1 style="color: white;">username: {{ username }}</h1>
+
+    </br>
+
+    <!-- Horizontal line across the page to split content -->
+    <hr style="border: 2px solid white;" />
+
+    <h1 style="color: white;">Classes in Common</h1>
+
+    <!-- Displays classes in common between current user and user being viewed -->
+    {% for rows in rows %}
+
+        <!-- Large button that displays class name -->
+        <form action="{{ url_for('view_class', subject=rows['subject'], number=rows['number']) }}">
+            <button id="large" class="btn btn-outline-light btn-block">{{ rows["subject"] }} {{rows["number"] }}</button>
+        </form>
+
+        </br>
+    {% endfor %}
+
+    </br>
+    <!-- Horizontal line across the page to split content -->
+    <hr style="border: 2px solid white;" />
+
+    <!-- Here users can see friends of friends -->
+    <!-- Because these names are linked, users can click the friends and find out which ones they aren't friends with -->
+    <h1 style="color: white;">{{ firstname }}'s Friends</h1>
+
+    <table class="table table-dark">
+
+        <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+
+        <tbody style="font-size: 20px;">
+
+            {% for rows in names %}
+            <a href="{{ url_for('view_friend', username1=rows['username']) }}">
+                <tr id="tr">
+                    <!-- Display full name and username of each friend -->
+                    <td><a href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["firstname"] }}</a></td>
+                    <td><a href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["lastname"] }}</a></td>
+                    <td><a href="{{ url_for('view_friend', username1=rows['username']) }}">{{ rows["username"] }}</a></td>
+                </tr>
+            </a>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+{% endblock %}

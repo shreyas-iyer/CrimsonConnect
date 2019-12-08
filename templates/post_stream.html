@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Post to Course Stream
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">Post to {{ subject }} {{ number }}'s Course Stream</h1>
+
+    </br>
+
+    <!-- Form to post message to the stream -->
+    <form action="{{ url_for('post_stream', subject=subject, number=number) }}" method="post">
+
+        <!-- Input field for the subject of the message -->
+        <div class="form-group">
+            <input autocomplete="off" maxlength="250" autofocus class="form-control" id="long" name="subject" placeholder="Subject" type="text">
+        </div>
+
+        <!-- Input field for the message -->
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="long" name="message" placeholder="Message" type="text">
+        </div>
+
+        </br>
+
+        <!-- Button to post the message to course stream -->
+        <button class="btn btn-outline-light btn-block btn-lg" type="submit"<div id="button">Post to Course Stream</div></button>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Send Chat
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">Send a Chat</h1>
+
+    <!-- Form to send a chat -->
+    <form action="/send_chat" method="post">
+
+        <!-- Input field for the username of the recipient of the message -->
+        <div class="form-group" align="left">
+            <input autocomplete="off" autofocus class="form-control" name="recipient" placeholder="Recipient's Username" type="text">
+        </div>
+
+        <!-- Input field for the subject of the message -->
+        <div class="form-group">
+            <input autocomplete="off" maxlength="250" autofocus class="form-control" id="long" name="subject" placeholder="Subject" type="text">
+        </div>
+
+        <!-- Input field for the contents of the message -->
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="long" name="message" placeholder="Message" type="text">
+        </div>
+
+        <!-- Button to submit form -->
+        <button class="btn btn-outline-light btn-block" type="submit"><div id="button">Send Message</div></button>
+    </form>
+{% endblock %}

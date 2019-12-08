@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <!-- Format: John Smith's Profile -->
+    {{ firstname }} {{ lastname }}'s Profile
+{% endblock %}
+
+{% block main %}
+    <!-- List full name and username at the top of the page -->
+    <h1 id="title">{{ firstname }} {{lastname}}</h1>
+    <h1 style="color: white;">username: {{ username }}</h1>
+
+    </br>
+
+    <!-- Horizontal line across the page to split content -->
+    <hr style="border: 2px solid white;" />
+
+    </br>
+
+    <!-- Display message and link to add friends page -->
+    <h2 style="color: white;">Sorry, you cannot view this user's profile until both of you are friends. <a href="/add_friends">Click here to add friends.</a></h2>
+
+{% endblock %}

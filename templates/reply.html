@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Reply to Chat
+{% endblock %}
+
+{% block main %}
+
+    <!-- Displays who you're replying to and the subject of the message -->
+    <h1 style="color: white;"><div align="left">Replying to: {{ rows["firstname"] }} {{ rows["lastname"] }}</div></h1>
+    <h1 style="color: white;"><div align="left">Subject: "Re: {{ rows["subject"] }}"</div></h1>
+
+    </br>
+
+    <div style="color: white; font-size: 20px">
+        <h2>{{ rows["firstname"] }}'s Message for reference:</h2>
+        {{ rows["message"] }}
+    </div>
+
+    </br>
+    </br>
+
+    <!-- Form to reply to a message -->
+    <form action="{{ url_for('reply', sender=rows['sender'], time=rows['time']) }}"  method="post">
+
+        <!-- Input field for message -->
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="long" name="message" placeholder="Message" type="text">
+        </div>
+
+        <!-- Button to submit form -->
+        <button class="btn btn-outline-light btn-lg" type="submit">Send Reply</button>
+
+    </form>
+
+{% endblock %}

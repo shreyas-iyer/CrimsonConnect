@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- Apology formatting -->
+    <div id="apology">
+
+        <!-- Insert variable top -->
+        Error: {{ top }}
+
+        <!-- Break -->
+        </br>
+
+        <!-- Insert variable bottom -->
+        {{ bottom }}
+
+    </div>
+
+{% endblock %}

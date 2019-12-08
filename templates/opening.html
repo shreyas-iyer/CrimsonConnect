@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">Add a course to your profile!</h1>
+
+    <!-- Breaks to add space -->
+    </br>
+    </br>
+
+    <!-- Button to add a class -->
+    <form action="/add_class" method='get'>
+        <td>
+            <button class="btn btn-outline-light btn-block btn-lg" type="submit">
+                <!-- Styling for button style/text -->
+                <div id="button">
+                    Add A Course
+                </div>
+            </button>
+        </td>
+    </form>
+
+
+{% endblock %}

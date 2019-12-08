@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+
+        <!-- First name and last name fields grouped together to be displayed in a single row -->
+        <div class="form-group">
+                    <input autocomplete="off"  autofocus class="form-control" name="firstname" placeholder="First Name" type="text">
+                    <input autocomplete="off" autofocus class="form-control" name="lastname" placeholder="Last Name" type="text">
+        </div>
+
+        <!-- Username field -->
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+
+        <!-- Password field -->
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+
+        <!-- Password confirmation field -->
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+
+        <!-- Submit button -->
+        <button class="btn btn-outline-light btn-lg" type="submit">Register</button>
+    </form>
+{% endblock %}

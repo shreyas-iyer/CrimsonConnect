@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    No Friends
+{% endblock %}
+
+{% block main %}
+    <h1 id="title">You have no friends</h1>
+
+    </br>
+
+    <!-- Horizontal white line -->
+    <hr style="border: 2px solid white;">
+
+    </br></br>
+
+    <!-- Button to add friends -->
+    <form action="/add_friends">
+        <button class="btn btn-outline-light btn-block"><div id="button">Add Friends</div></button>
+    </form>
+{% endblock %}

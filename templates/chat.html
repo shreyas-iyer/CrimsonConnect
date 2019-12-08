@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+  <h1 id="title">New Chats</h1>
+
+  <!-- Styling for collapsible copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible_animate -->
+  {% for rows in rows %}
+    <!-- Button that displays the message information -->
+    <button id="rounded" class="collapsible">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>
+              <div align="left">
+                <b style="color: white;">Subject: {{ rows["subject"] }}</b>
+              </div>
+            </th>
+
+            <th>
+              <center style="color: white;">From: {{ rows["firstname"] }} {{ rows["lastname"] }}</center>
+            </th>
+
+            <th>
+              <div style="color: white;" align="right">Time Sent: {{ rows["time"] }}</div>
+            </th>
+
+          </tr>
+        </thead>
+      </table>
+    </button>
+
+    <!-- Message displayed when collapsible is click on -->
+    <div id="rounded" class="content">
+      </br>
+      <p align="left" style="font-size: 20px;">{{ rows["message"] }}</p>
+
+        <!-- Mark as read button appears in each message box -->
+        <form style="display: inline;" action="{{ url_for('mark_as_read', sender=rows['sender'], time=rows['time']) }}" method='post'>
+          <button class="btn btn-outline-dark" type="submit">
+            <div id="chatbutton">
+              Mark as Read
+            </div>
+          </button>
+        </form>
+
+        <!-- Reply button appears in each message box -->
+        <form style="display: inline;" id="form" action="{{ url_for('reply', sender=rows['sender'], time=rows['time']) }}" method='get'>
+          <button class="btn btn-outline-dark" type="submit">
+            <div id="chatbutton">
+              Reply
+            </div>
+          </button>
+        </form>
+
+      <!-- Add line breaks at the end to add spacing between buttons and message box -->
+      </br>
+      </br>
+
+    </div>
+
+    </br>
+{% endfor %}
+  </br>
+
+  <!-- Horizontal line across the page to split courses and other buttons -->
+  <hr style="border: 2px solid white;">
+
+  </br>
+
+  <!-- Button to view sent messages -->
+  <form action="{{ url_for('view_sent') }}" method='post'>
+    <button class="btn btn-outline-light btn-block" type="submit">
+      <div id="button">
+        View Sent Messages
+      </div>
+    </button>
+
+    </br>
+
+  </form>
+  <!-- Button to view read messages -->
+  <form action="/view_all" method='post'>
+    <button class="btn btn-outline-light btn-block" type="submit">
+      <div id="button">
+        View Read Messages
+      </div>
+    </button>
+  </form>
+
+  <!-- Script to make collapsible and content move when clicked -->
+  <!-- Copied from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++)
+    {
+      coll[i].addEventListener("click", function()
+      {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight)
+        {
+          content.style.maxHeight = null;
+        }
+
+        else
+        {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
+
+{% endblock %}
